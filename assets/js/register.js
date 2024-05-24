@@ -19,32 +19,25 @@ $(document).ready(function() {
         var password = $(this).val();
         var strength = getPasswordStrength(password);
         var strengthBar = $('#password-strength-bar');
-        var strengthText = $('#password-strength-text');
 
         switch (strength) {
             case 1:
                 strengthBar.css('width', '20%').css('background-color', 'red');
-                strengthText.text('Très faible').css('color', 'red');
                 break;
             case 2:
                 strengthBar.css('width', '40%').css('background-color', 'orange');
-                strengthText.text('Faible').css('color', 'orange');
                 break;
             case 3:
                 strengthBar.css('width', '60%').css('background-color', 'yellow');
-                strengthText.text('Moyen').css('color', 'yellow');
                 break;
             case 4:
                 strengthBar.css('width', '80%').css('background-color', 'yellowgreen');
-                strengthText.text('Bon').css('color', 'yellowgreen');
                 break;
             case 5:
                 strengthBar.css('width', '100%').css('background-color', 'green');
-                strengthText.text('Très bon').css('color', 'green');
                 break;
             default:
                 strengthBar.css('width', '0').css('background-color', 'transparent');
-                strengthText.text('');
         }
     });
 

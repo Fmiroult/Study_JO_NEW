@@ -21,7 +21,6 @@
                 <div id="password-strength">
                     <div id="password-strength-bar"></div>
                 </div>
-                <div id="password-strength-text"></div>
             </div>
             <div class="form-group">
                 <label for="confirm_password">Confirmez le mot de passe :</label>
