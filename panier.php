@@ -70,14 +70,14 @@ include 'includes/header.php';
         <?php else: ?>
             <ul>
                 <?php foreach ($offers_in_cart as $offer): ?>
-                    <li style="display: flex; justify-content: space-between; align-items: center;">
+                    <li>
                         <img class="img20" src="assets/images/<?php echo htmlspecialchars($offer['picture']); ?>">
                         <span>
                             <strong>Formule <?php echo htmlspecialchars($offer['name']); ?></strong><br>
                             <?php echo htmlspecialchars($offer['description']); ?> - <?php echo htmlspecialchars(number_format($offer['price'], 2)); ?> €
                             (x<?php echo $_SESSION['cart'][$offer['id']]; ?>)
                         </span>
-                        <a href="panier.php?action=remove&offer_id=<?php echo $offer['id']; ?>" class="btn-remove" style="margin-left: 20px;">Retirer</a>
+                        <a href="panier.php?action=remove&offer_id=<?php echo $offer['id']; ?>" class="btn-remove">Retirer</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
