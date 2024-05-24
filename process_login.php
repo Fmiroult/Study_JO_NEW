@@ -35,12 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Génération du code de vérification pour les utilisateurs non-admin
                 $verification_code = rand(100000, 999999);
 
-                // Sauvegarde du code de vérification dans la session
+                // Sauvegarde du code de vérification et du timestamp dans la session
                 $_SESSION['verification_code'] = $verification_code;
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['user_email'] = $user['email'];
-                $_SESSION['user_name'] = $user['firstname'] . ' ' . $user['lastname'];
-                $_SESSION['user_role'] = $user['role'];
+                $_SESSION['temp_user_id'] = $user['id'];
+                $_SESSION['verification_code_timestamp'] = time();
 
                 // Envoi d'un email avec le code de vérification
                 $mail = new PHPMailer(true);
@@ -57,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mail->addAddress($email);
                 $mail->isHTML(true);
                 $mail->Subject = 'Votre code de vérification';
-                $mail->Body = "Bonjour, votre code de vérification est : <strong>$verification_code</strong>";
+                $mail->Body = "Bonjour, votre code de vérification est : <strong>$verification_code</strong>. Attention, ce code ne restera valide que 30 minutes.";
 
                 $mail->send();
 
