@@ -485,6 +485,9 @@ footer {
     text-decoration: none;
     border-radius: 3px;
     transition: background-color 0.3s ease;
+    margin-top: 10px;
+
+  }
 }
 
 .cart .btn-remove:hover {
@@ -510,7 +513,8 @@ footer {
 
     .cart .btn-remove {
         margin-top: 10px;
-        width: 100%;
         text-align: center;
+        width: auto;
+        align-self: center;
     }
 }
