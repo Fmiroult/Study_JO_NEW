@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    // Fonction pour calculer la force du mot de passe
     function getPasswordStrength(password) {
         var strength = 0;
         if (password.length >= 8) strength++;
@@ -10,7 +9,6 @@ $(document).ready(function() {
         return strength;
     }
 
-    // Mettre à jour la jauge de force du mot de passe
     $('#password').on('input', function() {
         var password = $(this).val();
         var strength = getPasswordStrength(password);
@@ -44,7 +42,6 @@ $(document).ready(function() {
         }
     });
 
-    // Gérer la soumission du formulaire
     $('#register-form').on('submit', function(event) {
         event.preventDefault();
 
@@ -52,7 +49,7 @@ $(document).ready(function() {
         var confirmPassword = $('#confirm_password').val();
         var passwordStrength = getPasswordStrength(password);
 
-        if (passwordStrength < 5) { // Si le mot de passe est trop faible
+        if (passwordStrength < 5) {
             showErrorPopup('Le mot de passe ne respecte pas les restrictions. Il doit contenir au moins 8 caractères, une majuscule, une minuscule et un caractère spécial.');
             return;
         }
