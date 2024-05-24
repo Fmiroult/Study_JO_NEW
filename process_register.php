@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cart_data = json_encode($cart);
         $cart_data = urlencode($cart_data);
 
-        $verification_link = "https://jo-study-fmi-fbdd2be0127a.herokuapp.com/verify_email.php?token=$verification_token&email=$email&firstname=$firstname&lastname=$lastname&password=$password&user_key=$user_key&cart=$cart_data";
+        $verification_link = "https://study-jo-fmi-new-f0cb4b12b08f.herokuapp.com/verify_email.php?token=$verification_token&email=$email&firstname=$firstname&lastname=$lastname&password=$password&user_key=$user_key&cart=$cart_data";
 
         // Configuration de PHPMailer
         $mail = new PHPMailer(true);
