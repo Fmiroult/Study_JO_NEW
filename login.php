@@ -16,6 +16,7 @@ include 'error_handling.php';?>
             <button type="submit" class="btn">Se connecter</button>
         </form>
         <p>Pas encore de compte ? <a href="register.php">Inscrivez-vous ici</a></p>
+        <p><a href="forgot_password.php">Mot de passe oublié ?</a></p> <!-- Ajout du lien pour mot de passe oublié -->
     </div>
 </section>
 
