@@ -57,6 +57,10 @@ header nav ul li a {
     text-decoration: none;
 }
 
+header .logo-image img {
+    margin-left: 20px;
+}
+
 .JO {
     background: url('../images/JO.jpg') no-repeat center center/cover;
     color: white;
@@ -93,6 +97,7 @@ header nav ul li a {
 .event-list {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .event-item {
@@ -100,6 +105,7 @@ header nav ul li a {
     background-color: #f4f4f4;
     padding: 20px;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .event-item h3 {
@@ -340,6 +346,7 @@ footer {
     margin-top: 5px;
     font-size: 0.9em;
 }
+
 /* CSS pour le formulaire d'inscription */
 .register form {
     max-width: 400px;
@@ -382,7 +389,6 @@ footer {
     width: 0%; /* Start with 0 width */
 }
 
-
 /* Classes pour la force du mot de passe */
 .weak {
     width: 33%;
@@ -397,4 +403,59 @@ footer {
 .strong {
     width: 100%;
     background-color: green;
+}
+
+/* Styles responsives */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .event-item, .offer-item {
+        width: 45%;
+    }
+
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #00788d;
+    }
+
+    header nav ul.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        margin-left: 20px;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+    }
+
+    .event-item, .offer-item {
+        width: 100%;
+    }
+
+    header .logo-image img {
+        width: 50%;
+        height: auto;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
