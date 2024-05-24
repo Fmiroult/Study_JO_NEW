@@ -1,11 +1,17 @@
 $(document).ready(function() {
     function getPasswordStrength(password) {
         var strength = 0;
-        if (password.length >= 8) strength++;
-        if (password.match(/[a-z]/)) strength++;
-        if (password.match(/[A-Z]/)) strength++;
-        if (password.match(/[0-9]/)) strength++;
-        if (password.match(/[\W]/)) strength++;
+        var criteria = [
+            (password.length >= 8),
+            /[a-z]/.test(password),
+            /[A-Z]/.test(password),
+            /[0-9]/.test(password),
+            /[\W]/.test(password)
+        ];
+
+        // Compter le nombre de critères remplis
+        strength = criteria.reduce((acc, cur) => acc + cur, 0);
+
         return strength;
     }
 
@@ -50,7 +56,7 @@ $(document).ready(function() {
         var passwordStrength = getPasswordStrength(password);
 
         if (passwordStrength < 5) {
-            showErrorPopup('Le mot de passe ne respecte pas les restrictions. Il doit contenir au moins 8 caractères, une majuscule, une minuscule et un caractère spécial.');
+            showErrorPopup('Le mot de passe ne respecte pas les restrictions. Il doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.');
             return;
         }
 
