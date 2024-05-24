@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mail->SMTPAuth = true;
                 $mail->Username = getenv('SENDGRID_USERNAME'); // Utiliser la variable d'environnement
                 $mail->Password = getenv('SENDGRID_API_KEY'); // Utiliser la variable d'environnement
-                $mail->SMTPSecure = 'tls';
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Utiliser TLS
                 $mail->Port = 587;
                 $mail->CharSet = 'UTF-8';
 
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mail->addAddress($email);
                 $mail->isHTML(true);
                 $mail->Subject = 'Votre code de vérification';
-                $mail->Body = "Bonjour, votre code de vérification est : <strong>$verification_code</strong><br><br> Attention, ce code ne restera valide que 30 minutes.";
+                $mail->Body = "Bonjour, votre code de vérification est : <strong>$verification_code</strong>. Attention, ce code ne restera valide que 30 minutes.";
 
                 $mail->send();
 
