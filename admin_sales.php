@@ -8,37 +8,42 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-$stmt = $pdo->prepare("SELECT role FROM users WHERE id = ?");
-$stmt->execute([$_SESSION['user_id']]);
-$user = $stmt->fetch();
+try {
+    $stmt = $pdo->prepare("SELECT role FROM users WHERE id = ?");
+    $stmt->execute([$_SESSION['user_id']]);
+    $user = $stmt->fetch();
 
-if ($user['role'] !== 'admin') {
-    header("Location: index.php");
+    if (!$user || $user['role'] !== 'admin') {
+        header("Location: index.php");
+        exit;
+    }
+
+    // Récupérer le nombre total de places disponibles
+    $seats_stmt = $pdo->prepare("SELECT total_seats FROM seats WHERE id = 1");
+    $seats_stmt->execute();
+    $seats = $seats_stmt->fetch();
+    $total_seats = $seats ? $seats['total_seats'] : 0;
+
+    // Récupérer le nombre total de places achetées
+    $purchased_seats_stmt = $pdo->query("
+        SELECT SUM(offers.seats_consumed) AS purchased_seats
+        FROM purchases
+        JOIN offers ON purchases.offer_id = offers.id
+    ");
+    $purchased_seats = $purchased_seats_stmt->fetch()['purchased_seats'];
+
+    // Récupérer les ventes par offre
+    $sales_stmt = $pdo->query("
+        SELECT offers.name, COUNT(purchases.id) AS sales_count
+        FROM purchases
+        JOIN offers ON purchases.offer_id = offers.id
+        GROUP BY offers.name
+    ");
+    $sales = $sales_stmt->fetchAll();
+} catch (Exception $e) {
+    echo json_encode(['status' => 'error', 'message' => 'Une erreur s\'est produite. Veuillez réessayer plus tard.']);
     exit;
 }
-
-// Récupérer le nombre total de places disponibles
-$seats_stmt = $pdo->prepare("SELECT total_seats FROM seats WHERE id = 1");
-$seats_stmt->execute();
-$seats = $seats_stmt->fetch();
-$total_seats = $seats['total_seats'];
-
-// Récupérer le nombre total de places achetées
-$purchased_seats_stmt = $pdo->query("
-    SELECT SUM(offers.seats_consumed) AS purchased_seats
-    FROM purchases
-    JOIN offers ON purchases.offer_id = offers.id
-");
-$purchased_seats = $purchased_seats_stmt->fetch()['purchased_seats'];
-
-// Récupérer les ventes par offre
-$sales_stmt = $pdo->query("
-    SELECT offers.name, COUNT(purchases.id) AS sales_count
-    FROM purchases
-    JOIN offers ON purchases.offer_id = offers.id
-    GROUP BY offers.name
-");
-$sales = $sales_stmt->fetchAll();
 
 include 'includes/header.php';
 ?>
