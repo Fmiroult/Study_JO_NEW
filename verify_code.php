@@ -3,7 +3,8 @@
     <div class="container">
         <h2>Vérification du Code</h2>
         <p>Veuillez récupérer le code qui vous a été transmit par mail et le noter ci-dessous.</p>
-        <p>Veillez à bien vérifier vos spam et/ou courriers indésirables. Attention, ce code est valable 30 minutes.</p>
+        <p>Veillez à bien vérifier vos spam et/ou courriers indésirables.</p>
+        <p>Attention, ce code est valable 30 minutes.</p>
         <form id="verify-code-form">
             <div class="form-group">
                 <label for="verification_code">Code de vérification :</label>

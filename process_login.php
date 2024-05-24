@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mail->addAddress($email);
                 $mail->isHTML(true);
                 $mail->Subject = 'Votre code de vérification';
-                $mail->Body = "Bonjour, votre code de vérification est : <strong>$verification_code</strong>. Attention, ce code ne restera valide que 30 minutes.";
+                $mail->Body = "Bonjour, votre code de vérification est : <strong>$verification_code</strong><br><br> Attention, ce code ne restera valide que 30 minutes.";
 
                 $mail->send();
 
