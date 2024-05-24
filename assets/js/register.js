@@ -28,17 +28,20 @@ $(document).ready(function() {
                     if (response.status === 'success') {
                         window.location.href = response.redirect_to;
                     } else {
-                        showErrorPopup(response.message);
+                        console.error('Erreur serveur: ', response.message);
+                        showErrorPopup(response.message + ' Détails: ' + response.error);
                     }
                 } catch (e) {
                     console.error('Erreur lors du traitement de la réponse JSON: ', e);
                     console.error('Réponse brute: ', response);
-                    showErrorPopup('Erreur lors de l\'inscription. Veuillez réessayer.');
+                    showErrorPopup('Erreur lors de l\'inscription. Veuillez réessayer. Détails: ' + e.message);
                 }
             },
             error: function(xhr, status, error) {
                 console.error('Erreur lors de la requête AJAX: ' + error);
-                showErrorPopup('Erreur lors de la requête AJAX. Veuillez réessayer.');
+                console.error('Statut: ' + status);
+                console.error('Réponse XHR: ', xhr);
+                showErrorPopup('Erreur lors de la requête AJAX. Veuillez réessayer. Détails: ' + error);
             }
         });
     });

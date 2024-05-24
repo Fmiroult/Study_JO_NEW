@@ -14,7 +14,8 @@ $(document).ready(function() {
                     if (response.status === 'success') {
                         window.location.href = response.redirect_to;
                     } else {
-                        $('#error-message').text(response.message);
+                        console.error('Erreur: ', response.details);
+                        $('#error-message').text(response.message + ' Détails: ' + response.details);
                         $('#error-popup').show();
                     }
                 } catch (e) {

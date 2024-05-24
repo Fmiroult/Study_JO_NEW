@@ -4,7 +4,6 @@ require 'vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
 use Dotenv\Dotenv;
 
 // Charger les variables d'environnement
@@ -44,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->isSMTP();
         $mail->Host = 'smtp.sendgrid.net';
         $mail->SMTPAuth = true;
-		$mail->getenv('SENDGRID_USERNAME');
-        $mail->getenv('SENDGRID_API_KEY');
+        $mail->Username = getenv('SENDGRID_USERNAME'); // Utiliser la variable d'environnement
+        $mail->Password = getenv('SENDGRID_API_KEY'); // Utiliser la variable d'environnement
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
         $mail->CharSet = 'UTF-8';
@@ -62,8 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Réponse JSON pour le succès
         echo json_encode(['status' => 'success', 'redirect_to' => 'pending_verification.php']);
     } catch (Exception $e) {
-        // Réponse JSON pour l'erreur
-        echo json_encode(['status' => 'error', 'message' => 'Erreur lors de l\'envoi de l\'email de vérification. Erreur Mailer : ' . $mail->ErrorInfo]);
+        // Réponse JSON pour l'erreur avec plus de détails
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Erreur lors de l\'envoi de l\'email de vérification. Erreur Mailer : ' . $mail->ErrorInfo,
+            'details' => $e->getMessage()
+        ]);
     }
 }
 ?>
