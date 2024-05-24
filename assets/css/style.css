@@ -1,0 +1,400 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.GoLeft {
+    width: 80%;
+    margin: auto auto auto 20px;
+    align-items: center;
+    justify-content: left;
+}
+
+.GoRight {
+    width: 80%;
+    margin: auto 20px auto auto;
+    align-items: center;
+    justify-content: right;
+}
+
+header {
+    background-color: #00788d;
+    color: white;
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+header .logo h1 {
+    margin: 0;
+    display: inline-block;
+}
+
+header nav {
+    display: inline-block;
+    float: right;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.JO {
+    background: url('../images/JO.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.JO h2 {
+    font-size: 3em;
+    margin: 0 0 20px;
+}
+
+.JO p {
+    font-size: 1.2em;
+}
+
+.JO .btn {
+    background-color: #00788d;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.events {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.events h2 {
+    margin-bottom: 40px;
+}
+
+.event-list {
+    display: flex;
+    justify-content: space-around;
+}
+
+.event-item {
+    width: 30%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.event-item h3 {
+    margin-top: 0;
+}
+
+footer {
+    background-color: #00788d;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px; /* Ajout de la marge supérieure */
+}
+
+.offers, .login, .cart {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.offers .offer-list, .cart ul {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.offers .offer-item, .cart li {
+    width: 30%;
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    list-style: none;
+}
+
+.offer-item h3, .cart li {
+    margin-top: 0;
+}
+
+.login form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.btn, .btn-remove, .admin-button {
+    background-color: #00788d;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+.btn-remove {
+    background-color: #ff0000;
+}
+
+.btn:hover, .admin-button:hover {
+    background-color: #311aff;
+}
+
+.flex {
+    display: flex;
+    width: 100%;
+}
+
+.register {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.register form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.register .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.register .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.register .form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.register .btn {
+    background-color: #00788d;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.cart ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cart li {
+    margin-bottom: 10px;
+}
+
+.cart .btn-remove {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.cart .btn-remove:hover {
+    background-color: #ff1a1a;
+}
+
+.cart li span {
+    flex: 1;
+}
+
+/* Styles pour l'image du header */
+.logo-image img {
+    margin-left: 20px;
+}
+
+/* Styles pour le voile gris transparent */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Gris transparent */
+    z-index: 999; /* Derrière le pop-up */
+}
+
+/* Styles pour le pop-up */
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+#popup-content {
+    text-align: center;
+}
+
+#popup .btn {
+    margin: 10px;
+}
+
+/* Styles pour le pop-up d'erreur */
+#error-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+#error-popup-content {
+    text-align: center;
+}
+
+#error-popup .btn {
+    margin: 10px;
+}
+
+.admin {
+    padding: 20px;
+}
+
+.admin-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.admin-buttons {
+    text-align: center;
+}
+
+#password-strength {
+    width: 100%;
+    height: 10px;
+    background-color: #e0e0e0;
+    margin-top: 5px;
+    position: relative;
+}
+
+#password-strength-bar {
+    height: 100%;
+    transition: width 0.3s;
+}
+
+#password-strength-text {
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+/* CSS pour le formulaire d'inscription */
+.register form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+#password-strength {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#password-strength-bar {
+    height: 20px;
+    border-radius: 5px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    line-height: 20px;
+    transition: width 0.3s;
+    width: 0%; /* Start with 0 width */
+}
+
+
+/* Classes pour la force du mot de passe */
+.weak {
+    width: 33%;
+    background-color: red;
+}
+
+.medium {
+    width: 66%;
+    background-color: orange;
+}
+
+.strong {
+    width: 100%;
+    background-color: green;
+}
